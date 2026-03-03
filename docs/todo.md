@@ -10,12 +10,9 @@
 | HG-005 | Identify Shopify theme and customisation approach | Medium | Planned | Understand what changes are possible |
 | HG-006 | Competitor analysis | Medium | Planned | Key competitors identified: foligain, hairmax, nutrafol, keeps, minoxidilmax |
 | HG-007 | Add H1 tags to 21 pages missing them | High | Blocked | Theme sections have H1 disabled — needs design decision (enable main-page/page-banner or edit sw-- sections) |
-| HG-010 | Add alt text to images across site | High | Blocked | Needs `read_products` + `write_products` Shopify API scope — re-authorize connection |
 | HG-014 | Create "GHK-Cu Hair Serum" comparison guide | Medium | Planned | Review/comparison format — not ranking for this keyword |
 | HG-016 | Page speed audit | Low | Planned | Not yet checked |
 | HG-017 | Add URL redirect /llms.txt → /pages/llms-txt | Medium | Planned | Shopify can't serve files at root — need redirect for AI crawlers |
-| HG-018 | Re-authorize Shopify API with product scopes | High | Planned | Required for image alt text (HG-010) and product meta titles/descriptions |
-| HG-019 | Update product meta titles and descriptions | High | Planned | Needs product API scope — currently blocked |
 
 ## Completed
 
@@ -33,3 +30,6 @@
 | HG-015 | Create "Hair Mesotherapy" hub page | 2026-03-03 | 14K char pillar page at /pages/hair-mesotherapy — strengthens #2 ranking |
 | HG-020 | Create Press & Media page | 2026-03-03 | 4 press articles at /pages/press — CelebDigest, Women's Insider, USA News, Men's Insider |
 | HG-021 | Re-run SEO audit — post-implementation | 2026-03-03 | Technical: 83/100 (unchanged), AI Discovery: 79/100 (was 74 = +5), Schema diversity: 10/10 (was 4/10) |
+| HG-010 | Add alt text to images across site | 2026-03-03 | 26 images updated with SEO-optimised alt text via REST API (6 products) |
+| HG-018 | Re-authorize Shopify API with product scopes | 2026-03-03 | New API with all scopes — client credentials grant flow |
+| HG-019 | Update product meta titles and descriptions | 2026-03-03 | 16 products — meta titles under 60 chars, descriptions under 155 chars |
