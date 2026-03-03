@@ -9,16 +9,13 @@
 | HG-002 | Verify analytics setup (GA4, GSC) | High | Planned | GSC confirmed connected — verify GA4 |
 | HG-005 | Identify Shopify theme and customisation approach | Medium | Planned | Understand what changes are possible |
 | HG-006 | Competitor analysis | Medium | Planned | Key competitors identified: foligain, hairmax, nutrafol, keeps, minoxidilmax |
-| HG-007 | Add H1 tags to 21 pages missing them | High | Planned | Critical SEO fix — collections, FAQ, guarantee, science pages |
-| HG-008 | Update meta titles on 34 pages | High | Planned | Use Content Optimizer suggestions — all have generic defaults |
-| HG-009 | Update meta descriptions on 34 pages | High | Planned | Most pages share same default description |
-| HG-010 | Add alt text to images across site | High | Planned | Hundreds missing — biggest SEO debt |
-| HG-011 | Create llms.txt file | Medium | Planned | For AI search engine discovery (ChatGPT, Perplexity, Claude) |
-| HG-012 | Add FAQPage, Article, HowTo schema | Medium | Planned | Currently only Organization, Product, WebSite |
-| HG-013 | Create "Copper Peptide Hair Growth" guide | Medium | Planned | Long-form content (1,500-2,000 words) — not ranking for this keyword |
+| HG-007 | Add H1 tags to 21 pages missing them | High | Blocked | Theme sections have H1 disabled — needs design decision (enable main-page/page-banner or edit sw-- sections) |
+| HG-010 | Add alt text to images across site | High | Blocked | Needs `read_products` + `write_products` Shopify API scope — re-authorize connection |
 | HG-014 | Create "GHK-Cu Hair Serum" comparison guide | Medium | Planned | Review/comparison format — not ranking for this keyword |
-| HG-015 | Expand mesotherapy at-home content | Low | Planned | Already ranking #2 — strengthen position |
 | HG-016 | Page speed audit | Low | Planned | Not yet checked |
+| HG-017 | Add URL redirect /llms.txt → /pages/llms-txt | Medium | Planned | Shopify can't serve files at root — need redirect for AI crawlers |
+| HG-018 | Re-authorize Shopify API with product scopes | High | Planned | Required for image alt text (HG-010) and product meta titles/descriptions |
+| HG-019 | Update product meta titles and descriptions | High | Planned | Needs product API scope — currently blocked |
 
 ## Completed
 
@@ -28,3 +25,11 @@
 | HG-001 | Run initial SEO audit with SEO Toolkit | 2026-03-03 | Technical: 83/100, AI: 74/100, Content: 64/100 avg |
 | HG-003 | Keyword research — hair growth niche | 2026-03-03 | 104 keywords, 4 clusters, 3 quick wins identified |
 | HG-004 | Content strategy — define pillars and plan | 2026-03-03 | Priorities defined in seo-strategy.md |
+| HG-008 | Update meta titles on 20 pages | 2026-03-03 | All pages updated via GraphQL pageUpdate with keyword-optimised titles |
+| HG-009 | Update meta descriptions on 20 pages | 2026-03-03 | All pages updated — unique, compelling descriptions under 155 chars |
+| HG-011 | Create llms.txt file | 2026-03-03 | Live at /pages/llms-txt — custom layout (none.liquid), section, template |
+| HG-012 | Add FAQPage, Article, HowTo, BreadcrumbList schema | 2026-03-03 | snippets/seo-schema.liquid injected into theme.liquid — all 4 types verified live |
+| HG-013 | Create "Copper Peptide Hair Growth" guide | 2026-03-03 | 15K char pillar page at /pages/copper-peptides-hair-growth |
+| HG-015 | Create "Hair Mesotherapy" hub page | 2026-03-03 | 14K char pillar page at /pages/hair-mesotherapy — strengthens #2 ranking |
+| HG-020 | Create Press & Media page | 2026-03-03 | 4 press articles at /pages/press — CelebDigest, Women's Insider, USA News, Men's Insider |
+| HG-021 | Re-run SEO audit — post-implementation | 2026-03-03 | Technical: 83/100 (unchanged), AI Discovery: 79/100 (was 74 = +5), Schema diversity: 10/10 (was 4/10) |
