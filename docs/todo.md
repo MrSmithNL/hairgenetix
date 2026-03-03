@@ -1,6 +1,6 @@
 # Todo — Hairgenetix (CLIENT-002)
 
-> Last updated: 2026-03-03
+> Last updated: 2026-03-03 (competitor analysis added)
 
 ## Active
 
@@ -8,7 +8,7 @@
 |----|------|----------|--------|-------|
 | HG-002 | Verify analytics setup (GA4, GSC) | High | Planned | GSC confirmed connected — verify GA4 |
 | HG-005 | Identify Shopify theme and customisation approach | Medium | Planned | Understand what changes are possible |
-| HG-006 | Competitor analysis | Medium | Planned | Key competitors identified: foligain, hairmax, nutrafol, keeps, minoxidilmax |
+| HG-006 | Competitor analysis | Medium | **Done** | Full analysis at docs/competitor-analysis.md — 5 competitors, llms.txt checks, content strategy, schema audit |
 | HG-007 | Add H1 tags to 21 pages missing them | High | Blocked | Theme sections have H1 disabled — needs design decision (enable main-page/page-banner or edit sw-- sections) |
 | HG-014 | Create "GHK-Cu Hair Serum" comparison guide | Medium | Planned | Review/comparison format — not ranking for this keyword |
 | HG-016 | Page speed audit | Low | Planned | Not yet checked |
@@ -33,3 +33,4 @@
 | HG-010 | Add alt text to images across site | 2026-03-03 | 26 images updated with SEO-optimised alt text via REST API (6 products) |
 | HG-018 | Re-authorize Shopify API with product scopes | 2026-03-03 | New API with all scopes — client credentials grant flow |
 | HG-019 | Update product meta titles and descriptions | 2026-03-03 | 16 products — meta titles under 60 chars, descriptions under 155 chars |
+| HG-006 | Competitor analysis | 2026-03-03 | 5 competitors researched: Foligain, Hairmax, Nutrafol, Keeps, MinoxidilMax. Full report at docs/competitor-analysis.md |
