@@ -83,3 +83,4 @@ From the AI Discovery v2.0 audit (score: 52/100). Ordered by ease of implementat
 | HG-033 | Answer-first page intros | 2026-03-04 | Styled intro blocks on 5 pages: The Science, Ingredients, Hair Loss, Scientific Research, Our Philosophy |
 | HG-036 | Create llms-full.txt | 2026-03-04 | 20KB extended version at /llms-full.txt — all products, pages, articles, FAQ, trust signals. Template + page + redirect |
 | HG-037 | Add lastmod dates to sitemap | 2026-03-04 | Investigated — Shopify auto-generates sitemaps, no custom lastmod support. Platform limitation, minimal impact (D5: 7→9) |
+| HG-046 | Add WebPage/MedicalWebPage schema to key landing pages | 2026-03-04 | WebPage + MedicalWebPage JSON-LD added to seo-schema.liquid. Health pages (hair-loss, ingredients) get MedicalWebPage; general pages get WebPage. Pages with existing content-type schemas (Article, FAQPage, HowTo) excluded. Helps Google AI Overviews cite pages. |
