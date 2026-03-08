@@ -1,6 +1,6 @@
 # Todo — Hairgenetix (CLIENT-002)
 
-> Last updated: 2026-03-04
+> Last updated: 2026-03-08
 
 ## AI Discovery v2.0 Quick Wins — Implementation Order
 
@@ -31,6 +31,7 @@ From the AI Discovery v2.0 audit (score: 52/100). Ordered by ease of implementat
 | HG-002 | Set up GA4 on hairgenetix.com | High | Blocked | GSC verified active. GA4 **NOT installed** — Malcolm needs to add GA4 measurement ID in Shopify admin |
 | HG-005 | Identify Shopify theme and customisation approach | Medium | Planned | Understand what changes are possible. Theme uses custom `sw--` sections |
 | HG-007 | Fix remaining H1 tag (ingredients page) | Low | Blocked | 16/17 pages fixed via template JSON + section edits. Ingredients page has per-page theme customization that overrides API — requires manual fix in Shopify Theme Editor |
+| HG-052 | Remove duplicate Organization schema from Shopify's auto-injection | Medium | Planned | Shopify injects a second, weaker Organization schema via `{{ content_for_header }}`. Our custom one with `@id` is stronger but the duplicate creates ambiguity. Investigate: (1) theme settings to disable built-in schema, (2) JavaScript removal post-render, (3) Shopify support request. |
 | HG-022 | Build content hub (20-30 articles) | High | Planned | From competitor analysis: nobody owns "GHK-Cu for hair", "mesotherapy at home", "copper peptide vs minoxidil" keywords. Publish in 9 languages for multilingual advantage |
 | HG-024 | Create "GHK-Cu vs Minoxidil" comparison page | Medium | Planned | Low-competition keyword. Educational format for AI citation |
 | HG-025 | Create "Mesotherapy vs Laser Hair Growth" comparison page | Medium | Planned | Low-competition keyword. Hairgenetix vs HairMax positioning |
@@ -89,3 +90,10 @@ From the AI Discovery v2.0 audit (score: 52/100). Ordered by ease of implementat
 | HG-049 | Fix German H1 — grammatically broken | 2026-03-08 | Changed from "KEHREN SIE IHR HAARVERLUST" (broken grammar, wrong keyword) to "STOPPEN SIE IHREN HAARAUSFALL" (correct grammar, high-volume keyword "Haarausfall"). |
 | HG-050 | Fix og:image http→https + add twitter:image | 2026-03-08 | meta-tags.liquid updated: og:image now uses https:// instead of http://, twitter:image tag added for proper Twitter/X card rendering. |
 | HG-051 | Add unique collection meta descriptions in all 9 languages | 2026-03-08 | "All Products" collection had no meta description (was duplicating homepage description). Added unique product-focused descriptions in all 9 languages via Translations API. |
+| HG-053 | Translate dedicated FAQ page schema (15 Q&As) in all 9 languages | 2026-03-08 | FAQPage JSON-LD on /pages/faqs now has locale-aware case statement for all 15 Q&As in NL, DE, FR, ES, IT, SV, DA, NO. Also fixed translated handle check for NL ('veelgestelde-vragen'). |
+| HG-054 | Translate MedicalScholarlyArticle keywords + about per locale | 2026-03-08 | Keywords array and about.alternateName on science pages now locale-aware. Also fixed DE translated handle 'wissenschaftlich-forschend'. |
+| HG-055 | Add Blog listing ItemList schema | 2026-03-08 | ItemList JSON-LD added for `template.name == 'blog'` pages. Shows up to 20 articles with position, URL, name. Works on all locales. |
+| HG-056 | Translate Product category field per locale | 2026-03-08 | Product schema `category` field now uses locale-aware variable: "Haaruitvalbehandelingen" (NL), "Haarausfallbehandlungen" (DE), etc. instead of hardcoded English. |
+| HG-057 | Make llms.txt locale-aware in all 9 languages | 2026-03-08 | Updated `templates/page.llms-txt.liquid` with full locale detection. All section headers, descriptions, and company info translated per language while keeping URLs in English. |
+| HG-058 | Add AI bot directives to robots.txt | 2026-03-08 | Created `templates/robots.txt.liquid` with Allow directives for GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Amazonbot, and other AI crawlers. |
+| HG-059 | Fix ai.txt redirect | 2026-03-08 | `/ai.txt` redirects to `/pages/ai-txt` (200). `/.well-known/ai.txt` is a Shopify platform limitation — Shopify blocks `.well-known` paths. |
