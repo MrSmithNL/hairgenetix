@@ -36,6 +36,54 @@ From the AI Discovery v2.0 audit (score: 52/100). Ordered by ease of implementat
 | HG-024 | Create "GHK-Cu vs Minoxidil" comparison page | Medium | Planned | Low-competition keyword. Educational format for AI citation |
 | HG-025 | Create "Mesotherapy vs Laser Hair Growth" comparison page | Medium | Planned | Low-competition keyword. Hairgenetix vs HairMax positioning |
 
+## From DE Audit (2026-03-08) — Prioritized Gaps
+
+**Source:** [audit-extraction-2026-03-08.md](audit-extraction-2026-03-08.md)
+**Audit scores:** SEO 6/10, Technical 7/10, Content 6/10, Authority 4/10, LLM 4/10 (Overall 5.5/10)
+
+### Priority 1: Technical Fixes (Month 1)
+
+| ID | Task | Priority | Status | Notes |
+|----|------|----------|--------|-------|
+| HG-067 | Add hreflang tags for all 9 languages | HIGH | Planned | Biggest technical gap. Each page needs `<link rel="alternate" hreflang="xx">` for all 9 languages + x-default. Investigate Shopify app vs theme liquid. |
+| HG-068 | Optimize German page titles for search intent | HIGH | Planned | Current titles are brand-focused. Need keyword-optimized titles like "Haarmesotherapie für Zuhause \| Kupferpeptid Haarserum \| Hairgenetix" |
+| HG-069 | Add localized German alt text to all product images | MEDIUM | Planned | e.g., `alt="Kupferpeptid Haarwachstum Shampoo GHK-Cu"`. Currently generic. Blocked: needs `read_products` API scope. |
+| HG-070 | Measure Core Web Vitals and fix if needed | MEDIUM | Planned | Run PageSpeed Insights for DE homepage + product pages. Target: LCP <2.5s, CLS <0.1, INP <200ms |
+| HG-071 | Verify robots.txt blocks /cart, /checkout, /account, /search | LOW | Planned | Shopify usually handles this, but verify |
+| HG-072 | Check language-segmented sitemaps | LOW | Planned | Verify if Shopify generates `/de/sitemap.xml` etc. |
+
+### Priority 2: Content Creation (Months 1-3)
+
+| ID | Task | Priority | Status | Notes |
+|----|------|----------|--------|-------|
+| HG-073 | Write Pillar 1: "The Complete Guide to Hair Loss" (EN+DE) | HIGH | Planned | 4000+ words. Targets: haarausfall (200k), hair loss (2M). See [keyword-strategy.md](keyword-strategy.md) Cluster 1 |
+| HG-074 | Write Pillar 2: "Microneedling for Hair Growth" (EN+DE) | HIGH | Planned | 4000+ words. Core differentiator. Targets: microneedling hair growth. 30k+/month potential |
+| HG-075 | Write Pillar 3: "Best Hair Loss Treatments Compared" (EN+DE) | HIGH | Planned | Comparison format. Highest commercial intent. Include treatment table. |
+| HG-076 | Write Pillar 4: "Copper Peptides for Hair Growth" (EN+DE) | HIGH | Planned | Already have a page — needs expanding to 4000+ words with comparison tables + FAQ |
+| HG-077 | Write Pillar 5: "Hair Regrowth Routine" (EN+DE) | HIGH | Planned | Direct product funnel. Step-by-step protocol + timeline |
+| HG-078 | Write 25 cluster articles (see keyword-strategy.md) | MEDIUM | Planned | 5 per cluster, 1500-2500 words each. Prioritize comparison and FAQ articles first |
+| HG-079 | Create clinical study page from 93% hair loss reduction data | HIGH | Planned | Turn clinical claim into proper study page with methodology, before/after, design |
+| HG-080 | Create visual content: hair growth cycle diagram, follicle diagram, microneedling mechanism | MEDIUM | Planned | 156% higher AI selection with multi-modal content |
+
+### Priority 3: Authority & Entity Building (Months 2-4)
+
+| ID | Task | Priority | Status | Notes |
+|----|------|----------|--------|-------|
+| HG-081 | Create Crunchbase profile for Hairgenetix | HIGH | Planned | Entity building — AI models recognize entities from knowledge databases |
+| HG-082 | Create/verify LinkedIn company page | HIGH | Planned | Professional entity signal |
+| HG-083 | Investigate Wikidata entry feasibility | MEDIUM | Planned | If brand is notable enough. ChatGPT's #1 source (7.8% of citations) |
+| HG-084 | Add medical reviewer byline to all health content | HIGH | Planned (Malcolm review) | Requires Malcolm to identify/recruit a dermatologist or trichologist. E-E-A-T critical for YMYL. |
+| HG-085 | Create author/expert page with credentials | HIGH | Planned (Malcolm review) | Depends on HG-030 decision — who is the author? |
+| HG-086 | Add homepage comparison table (treatments vs Hairgenetix) | MEDIUM | Planned | Conversion + AI extraction. Minoxidil vs PRP vs Mesotherapy table. |
+
+### Priority 4: SEO+AISO Validation (Month 2+)
+
+| ID | Task | Priority | Status | Notes |
+|----|------|----------|--------|-------|
+| HG-087 | Run first SEO+AISO validation (ChatGPT + Gemini) on DE site | HIGH | Planned | Use `seo-aiso-validator` skill. Score all criteria, identify gaps <9 |
+| HG-088 | Run Share of Model baseline measurement | MEDIUM | Planned | Test 25-50 queries across ChatGPT, Perplexity, Gemini. Record current brand mentions |
+| HG-089 | Set up quarterly re-audit schedule | LOW | Planned | Add to launchd scheduled tasks |
+
 ## Medium-Term (External Authority — 3-6 months)
 
 | ID | Task | Priority | Status | Notes |
