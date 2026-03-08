@@ -1,7 +1,7 @@
 # SEO Strategy — Hairgenetix (CLIENT-002)
 
-> Last updated: 2026-03-03
-> Status: Initial audit complete — action plan defined
+> Last updated: 2026-03-08
+> Status: Multilingual SEO schema audit complete — all structured data now localised
 
 ## Audit Summary (2026-03-03)
 
