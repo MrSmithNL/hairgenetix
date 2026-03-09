@@ -1,7 +1,7 @@
 # SEO+AISO Audit Tracker — hairgenetix.com
 
 > Last updated: 2026-03-09
-> Status: EN Round 1 complete (6.70/10) — Round 1 fixes applied, re-audit pending
+> Status: EN Round 2 complete (8.95/10) — triage pending for remaining items
 
 ---
 
@@ -10,7 +10,7 @@
 | Language | Pages Audited | Avg Score | Last Audit | Status |
 |----------|--------------|-----------|------------|--------|
 | DE | 1 | 8.35 | 2026-03-09 | Round 2: 8.35/10 (+3.0 from R1), triage pending |
-| EN | 1 | 6.70 | 2026-03-09 | Round 1: 6.70/10, fixes in progress |
+| EN | 1 | 8.95 | 2026-03-09 | Round 2: 8.95/10 (+2.25 from R1), triage pending |
 | NL | 0 | — | — | Not started |
 | FR | 0 | — | — | Not started |
 | ES | 0 | — | — | Not started |
@@ -46,30 +46,30 @@
 | 019 | /de | DE | Brand mention readiness | 7.5 | 9 | 8 | 8.5 | — | FIX LATER | Open |
 | 020 | /de | DE | AI citation readiness | 5.5 | 7 | 8 | 7.5 | Improves from other fixes | FIX LATER | Open |
 
-### EN Homepage — Round 1 Issues (correct URL: / not /en)
+### EN Homepage — Round 2 Results (correct URL: / not /en)
 
-| ID | Page | Lang | Criterion | R1 GPT | R1 Gemini | R1 Avg | Recommendation | Verdict | Status |
-|----|------|------|-----------|--------|-----------|--------|---------------|---------|--------|
-| E001 | / | EN | Answer-first format | 7 | 8 | 7.5 | Lead hero with summary, not just "REVERSE YOUR HAIR LOSS" | FIX LATER | Open |
-| E002 | / | EN | Definition paragraph | 5 | 5 | 5.0 | Add brand definition to hero subtitle | FIX NOW | Open |
-| E003 | / | EN | Heading hierarchy | 6 | 6 | 6.0 | Fix H6 product subtitles → H3/H4 | FIX NOW | Open |
-| E004 | / | EN | Atomic paragraphs | 8 | 7 | 7.5 | Break remaining long paragraphs | FIX LATER | Open |
-| E005 | / | EN | Fact density | 7 | 8 | 7.5 | Add visible citations | FIX LATER | Open |
-| E006 | / | EN | Comparison content | 8 | 9 | 8.5 | — | DEFER | Open |
-| E007 | / | EN | List/table format | 6 | 5 | 5.5 | Present clinical stats in structured table | FIX NOW | Open |
-| E008 | / | EN | Content depth | 8 | 7 | 7.5 | Expand scientific explanations | FIX LATER | Open |
-| E009 | / | EN | Front-loading | 7 | 8 | 7.5 | Ensure key benefits in first 30% | FIX LATER | Open |
-| E010 | / | EN | Multi-modal | 9 | 6 | 7.5 | Models disagree; video exists | DEFER | Open |
-| E011 | / | EN | Schema markup | 7 | 9 | 8.0 | Cache pending — schemas deployed | WAIT | Open |
-| E012 | / | EN | FAQ section | 9 | 10 | 9.5 | — | PASS | Closed |
-| E013 | / | EN | Citation quality | 5 | 4 | 4.5 | Add visible PubMed/DOI links | FIX NOW | Open |
-| E014 | / | EN | Internal linking | 8 | 7 | 7.5 | Add more contextual content links | FIX LATER | Open |
-| E015 | / | EN | Meta optimization | 9 | 9 | 9.0 | — | PASS | Closed |
-| E016 | / | EN | Author attribution | 4 | 3 | 3.5 | Cache pending — trust signal deployed | WAIT | Open |
-| E017 | / | EN | Medical/expert review | 5 | 4 | 4.5 | Cache pending — Dr. Bodde schema deployed | WAIT | Open |
-| E018 | / | EN | Recency | 4 | 5 | 4.5 | Cache pending — last-updated deployed | WAIT | Open |
-| E019 | / | EN | Brand mention readiness | 6 | 8 | 7.0 | Add quotable brand definition | FIX NOW | Open |
-| E020 | / | EN | AI citation readiness | 6 | 6 | 6.0 | Improves from other fixes | FIX LATER | Open |
+| ID | Page | Lang | Criterion | R1 Avg | R2 GPT | R2 Gemini | R2 Avg | Recommendation | Verdict | Status |
+|----|------|------|-----------|--------|--------|-----------|--------|---------------|---------|--------|
+| E001 | / | EN | Answer-first format | 7.5 | 9 | 9 | 9.0 | — | PASS | Closed |
+| E002 | / | EN | Definition paragraph | 5.0 | 8 | 8 | 8.0 | Add explicit definition of "mesotherapy" | FIX LATER | Open |
+| E003 | / | EN | Heading hierarchy | 6.0 | 10 | 9 | 9.5 | — | PASS | Closed |
+| E004 | / | EN | Atomic paragraphs | 7.5 | 9 | 8 | 8.5 | Break longer comparison paragraphs | FIX LATER | Open |
+| E005 | / | EN | Fact density | 7.5 | 9 | 9 | 9.0 | — | PASS | Closed |
+| E006 | / | EN | Comparison content | 8.5 | 9 | 9 | 9.0 | — | PASS | Closed |
+| E007 | / | EN | List/table format | 5.5 | 8 | 8 | 8.0 | Add table for clinical trial data | FIX LATER | Open |
+| E008 | / | EN | Content depth | 7.5 | 9 | 9 | 9.0 | — | PASS | Closed |
+| E009 | / | EN | Front-loading | 7.5 | 9 | 8 | 8.5 | Reorder for compelling data first | FIX LATER | Open |
+| E010 | / | EN | Multi-modal | 7.5 | 8 | 7 | 7.5 | Add explainer video or infographic | DEFER | Open |
+| E011 | / | EN | Schema markup | 8.0 | 10 | 10 | 10.0 | — | PASS | Closed |
+| E012 | / | EN | FAQ section | 9.5 | 10 | 10 | 10.0 | — | PASS | Closed |
+| E013 | / | EN | Citation quality | 4.5 | 9 | 9 | 9.0 | — | PASS | Closed |
+| E014 | / | EN | Internal linking | 7.5 | 9 | 8 | 8.5 | Add more contextual content links | FIX LATER | Open |
+| E015 | / | EN | Meta optimization | 9.0 | 10 | 9 | 9.5 | — | PASS | Closed |
+| E016 | / | EN | Author attribution | 3.5 | 9 | 9 | 9.0 | — | PASS | Closed |
+| E017 | / | EN | Medical/expert review | 4.5 | 10 | 10 | 10.0 | — | PASS | Closed |
+| E018 | / | EN | Recency | 4.5 | 9 | 9 | 9.0 | — | PASS | Closed |
+| E019 | / | EN | Brand mention readiness | 7.0 | 9 | 9 | 9.0 | — | PASS | Closed |
+| E020 | / | EN | AI citation readiness | 6.0 | 9 | 9 | 9.0 | — | PASS | Closed |
 
 ### Technical Issue — RESOLVED
 
@@ -115,6 +115,7 @@ Verified working on NL homepage and product pages. DE homepage pending CDN cache
 | 1 | 2026-03-08 | /de | DE | GPT-4o (5.2) | Llama 3.3 70B (5.5) | 5.35 | page-audit-2026-03-08-de-homepage.md |
 | 2 | 2026-03-09 | /de | DE | GPT-4o (8.6) | Gemini (8.1) | 8.35 | page-audit-2026-03-09-de-homepage.md |
 | 1 | 2026-03-09 | / | EN | GPT-4o (6.7) | Gemini (6.65) | 6.70 | page-audit-2026-03-09-en-homepage.md |
+| 2 | 2026-03-09 | / | EN | GPT-4o (9.05) | Gemini (8.85) | 8.95 | page-audit-2026-03-09-en-homepage-r2.md |
 
 ---
 
