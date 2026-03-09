@@ -99,10 +99,10 @@
 ### Technical Issue — RESOLVED
 
 **seo-schema.liquid truncation (FIXED):** The 120KB/2364-line file was silently truncated by Shopify's Liquid renderer. Fixed by splitting into 5 files:
-- `seo-schema.liquid` (15KB) — locale vars + Organization + BreadcrumbList + render calls
+- `seo-schema.liquid` (18KB) — locale vars + Organization (with 6 reviews) + BreadcrumbList + render calls
 - `seo-schema-product.liquid` (24KB) — Product + Product FAQ schemas
 - `seo-schema-faq-page.liquid` (58KB) — Dedicated FAQ page schema
-- `seo-schema-homepage.liquid` (14KB) — Homepage FAQPage + WebPage + ItemList + Table (comparison)
+- `seo-schema-homepage.liquid` (19KB) — Homepage FAQPage + WebPage (with VideoObject) + ItemList + Table (comparison)
 - `seo-schema-content.liquid` (11KB) — HowTo + Article + Blog + WebPage + Collection
 
 Also uses `request.page_type` (global) instead of `template.name` (not available in `{% render %}` scope).
@@ -134,6 +134,8 @@ Verified working on NL homepage and product pages. DE homepage pending CDN cache
 | N011+N012 | /nl | NL | FAQ + ItemList schemas translated to Dutch | English FAQ and ItemList in schema | 7-question Dutch FAQPage + 4-item Dutch ItemList | 2026-03-09 |
 | N016+N017 | /nl | NL | WebPage reviewer title localized | German "Kosmetische & medizinische Ärztin" | Dutch "Cosmetisch & medisch arts (MD)" + localized for all languages | 2026-03-09 |
 | ALL | all | all | Table schema for comparison content | Comparison table only in visible HTML, not in structured data | `Table` schema.org JSON-LD with localized names/descriptions for all 9 languages in seo-schema-homepage.liquid | 2026-03-09 |
+| ALL | all | all | Review schema for customer testimonials | No individual reviews in structured data (only AggregateRating) | 6 customer `Review` objects (Diego, Kim, Karen, Dennis, Luca, Joanne) in Organization schema — diverse countries and use cases | 2026-03-09 |
+| ALL | all | all | VideoObject schema for customer results | Customer result videos had no structured data | `VideoObject` nested in WebPage schema with localized name/description for all 9 languages | 2026-03-09 |
 
 ---
 
