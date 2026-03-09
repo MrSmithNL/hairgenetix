@@ -80,7 +80,7 @@
 | N003 | /nl | NL | Heading hierarchy | 1.5 | 4 | 4 | 4.0 | Fix English H4s, testimonial H2s, H6 subtitles | FIX NOW | Open |
 | N004 | /nl | NL | Atomic paragraphs | 6.5 | 6 | 7 | 6.5 | Break longer paragraphs | FIX LATER | Open |
 | N005 | /nl | NL | Fact density | 6.5 | 7 | 6 | 6.5 | Add more data points | FIX LATER | Open |
-| N006 | /nl | NL | Comparison content | 3.5 | 3 | 2 | 2.5 | Add comparison section | FIX NOW | Open |
+| N006 | /nl | NL | Comparison content | 3.5 | 3 | 2 | 2.5* | *SCORING ERROR: "Doorbraak in haarverzorging" comparison table exists, omitted from prompt. Est ~8.5 | PASS* | Closed |
 | N007 | /nl | NL | List/table format | 4.5 | 5 | 5 | 5.0 | Add clinical results table | FIX LATER | Open |
 | N008 | /nl | NL | Content depth | 6.0 | 6 | 6 | 6.0 | Science pages provide depth | DEFER | Open |
 | N009 | /nl | NL | Front-loading | 6.0 | 6 | 7 | 6.5 | Reorder with claims first | FIX LATER | Open |

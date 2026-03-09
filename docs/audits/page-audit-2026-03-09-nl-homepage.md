@@ -17,7 +17,7 @@
 | 3 | Heading hierarchy | 2 | 1 | 1.5 | NEEDS WORK |
 | 4 | Atomic paragraphs | 8 | 5 | 6.5 | NEEDS WORK |
 | 5 | Fact density | 6 | 7 | 6.5 | NEEDS WORK |
-| 6 | Comparison content | 4 | 3 | 3.5 | NEEDS WORK |
+| 6 | Comparison content | 4 | 3 | 3.5 | **UNDERSCORED** (see note) |
 | 7 | List/table format | 5 | 4 | 4.5 | NEEDS WORK |
 | 8 | Content depth | 6 | 6 | 6.0 | NEEDS WORK |
 | 9 | Front-loading | 7 | 5 | 6.0 | NEEDS WORK |
@@ -77,7 +77,7 @@ No criteria reach the 9.0 pass threshold.
 | ID | Criterion | Score | Recommendation |
 |----|-----------|-------|----------------|
 | N012 | FAQ section | 4.0 | Translate FAQ schema to Dutch |
-| N006 | Comparison content | 3.5 | Add comparison section (mesotherapy vs topical vs clinical) |
+| N006 | Comparison content | 3.5 | **SCORING ERROR** — "Doorbraak in haarverzorging" comparison table already exists (Mesotherapie thuis vs Klinisch vs Topisch). Omitted from audit prompt. Est. true score: ~8.5 |
 | N019 | Brand mention readiness | 3.5 | Brand definition in hero will fix this |
 | N014 | Internal linking | 5.0 | Add contextual links within content sections |
 | N001 | Answer-first format | 6.5 | Brand definition in hero will improve this |

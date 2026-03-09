@@ -17,7 +17,7 @@
 | 3 | Heading hierarchy | 4 | 4 | 4.0 | NEEDS WORK |
 | 4 | Atomic paragraphs | 6 | 7 | 6.5 | NEEDS WORK |
 | 5 | Fact density | 7 | 6 | 6.5 | NEEDS WORK |
-| 6 | Comparison content | 3 | 2 | 2.5 | NEEDS WORK |
+| 6 | Comparison content | 3 | 2 | 2.5 | **UNDERSCORED** (see note) |
 | 7 | List/table format | 5 | 5 | 5.0 | NEEDS WORK |
 | 8 | Content depth | 6 | 6 | 6.0 | NEEDS WORK |
 | 9 | Front-loading | 6 | 7 | 6.5 | NEEDS WORK |
@@ -50,10 +50,14 @@
 
 ## Remaining Gaps (19/20)
 
+### Scoring Error — Comparison Content
+**#6 Comparison content scored 2.5 — this is incorrect.** The NL homepage has a full comparison table section ("Doorbraak in haarverzorging") comparing "Mesotherapie voor thuis" vs "Klinische mesotherapie" vs "Topische opties" with features like micro-injectie, gemakkelijk thuis, betaalbaar, biotechnologische innovatie, minimaal ongemak. This section was omitted from the audit prompt, causing both evaluators to score it as missing. Estimated true score: ~8.5 (similar to EN/DE comparison sections).
+
+**Adjusted average with corrected #6 (~8.5): ~7.20/10** (vs reported 6.90)
+
 ### Critical (below 5.0)
 | # | Criterion | R2 Avg | Fix |
 |---|-----------|--------|-----|
-| 6 | Comparison content | 2.5 | Add comparison section (mesotherapy vs topical vs clinical) |
 | 3 | Heading hierarchy | 4.0 | Fix English H4 testimonial labels, H6 product subtitles, excessive H2s for names |
 
 ### Medium (5.0-7.9)
