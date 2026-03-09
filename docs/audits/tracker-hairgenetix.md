@@ -1,7 +1,7 @@
 # SEO+AISO Audit Tracker — hairgenetix.com
 
 > Last updated: 2026-03-09
-> Status: NL Round 2 complete (6.90/10) — heading hierarchy + comparison content pending
+> Status: Full EN + DE site audits complete (12 pages). EN site avg 4.83, DE site avg 6.43. About pages critical on both.
 
 ---
 
@@ -9,15 +9,15 @@
 
 | Language | Pages Audited | Avg Score | Last Audit | Status |
 |----------|--------------|-----------|------------|--------|
-| DE | 1 | 8.35 | 2026-03-09 | Round 2: 8.35/10 (+3.0 from R1), triage pending |
-| EN | 1 | 8.95 | 2026-03-09 | Round 2: 8.95/10 (+2.25 from R1), triage pending |
+| DE | 6 | 6.22 | 2026-03-09 | Full site audit: Homepage 8.35, Product 5.50, Science 6.95, Blog 7.10, FAQ 4.92, About 5.42 |
+| EN | 6 | 4.83 | 2026-03-09 | Full site audit: Homepage 6.70, Product 5.60, Science 4.38, Blog 4.45, FAQ 5.30, About 2.95 |
 | NL | 1 | 6.90 | 2026-03-09 | Round 2: 6.90/10 (+1.85 from R1), heading/comparison pending |
-| FR | 0 | — | — | Not started |
-| ES | 0 | — | — | Not started |
-| IT | 0 | — | — | Not started |
-| SV | 0 | — | — | Not started |
-| DA | 0 | — | — | Not started |
-| NO | 0 | — | — | Not started |
+| FR | 1 | 7.72 | 2026-03-09 | Round 1: 7.72/10, 4/20 passing |
+| ES | 1 | 7.93 | 2026-03-09 | Round 1: 7.93/10, 4/20 passing |
+| IT | 1 | 8.10 | 2026-03-09 | Round 1: 8.10/10, 4/20 passing |
+| SV | 1 | 7.25 | 2026-03-09 | Round 1: 7.25/10, 1/20 passing |
+| DA | 1 | 7.92 | 2026-03-09 | Round 1: 7.92/10, 5/20 passing |
+| NO | 1 | 7.15 | 2026-03-09 | Round 1: 7.15/10, 1/20 passing |
 
 ---
 
@@ -98,15 +98,18 @@
 
 ### Technical Issue — RESOLVED
 
-**seo-schema.liquid truncation (FIXED):** The 120KB/2364-line file was silently truncated by Shopify's Liquid renderer. Fixed by splitting into 5 files:
+**seo-schema.liquid truncation (FIXED):** The 120KB/2364-line file was silently truncated by Shopify's Liquid renderer. Fixed by splitting into 8 files:
 - `seo-schema.liquid` (18KB) — locale vars + Organization (with 6 reviews) + BreadcrumbList + render calls
 - `seo-schema-product.liquid` (24KB) — Product + Product FAQ schemas
 - `seo-schema-faq-page.liquid` (58KB) — Dedicated FAQ page schema
 - `seo-schema-homepage.liquid` (19KB) — Homepage FAQPage + WebPage (with VideoObject) + ItemList + Table (comparison)
-- `seo-schema-content.liquid` (11KB) — HowTo + Article + Blog + WebPage + Collection
+- `seo-schema-content.liquid` (11KB) — HowTo + Article + Blog + WebPage + Collection + MedicalScholarlyArticle
+- `seo-schema-science-faq.liquid` (5KB) — FAQPage for science page (5 Q&A, EN/DE/NL/FR/ES/IT)
+- `seo-schema-about-faq.liquid` (4KB) — FAQPage for about page (5 Q&A, EN/DE/NL)
+- `seo-schema-blog-faq.liquid` (4KB) — FAQPage for blog mesotherapy article (5 Q&A, EN/DE/NL)
 
-Also uses `request.page_type` (global) instead of `template.name` (not available in `{% render %}` scope).
-Verified working on NL homepage and product pages. DE homepage pending CDN cache invalidation.
+Uses `request.page_type` (global) instead of `template.name` (not available in `{% render %}` scope).
+**Key finding:** FAQ schemas embedded inside `seo-schema-content.liquid` failed to render silently — required extraction to separate snippets. CDN caching masks changes (homepage refreshes fast, inner pages can take hours).
 
 ---
 
@@ -136,6 +139,17 @@ Verified working on NL homepage and product pages. DE homepage pending CDN cache
 | ALL | all | all | Table schema for comparison content | Comparison table only in visible HTML, not in structured data | `Table` schema.org JSON-LD with localized names/descriptions for all 9 languages in seo-schema-homepage.liquid | 2026-03-09 |
 | ALL | all | all | Review schema for customer testimonials | No individual reviews in structured data (only AggregateRating) | 6 customer `Review` objects (Diego, Kim, Karen, Dennis, Luca, Joanne) in Organization schema — diverse countries and use cases | 2026-03-09 |
 | ALL | all | all | VideoObject schema for customer results | Customer result videos had no structured data | `VideoObject` nested in WebPage schema with localized name/description for all 9 languages | 2026-03-09 |
+| ALL | all | all | Navigation menu locale fix | All menu items used HTTP type (hardcoded English URLs) — non-EN users clicking menu links got sent to English pages | All 20+ menu items converted to internal Shopify types (PAGE, COLLECTION, BLOG, CATALOG) via GraphQL `menuUpdate`. URLs now auto-localize with `/nl/`, `/de/` etc. prefixes. Verified on NL + DE uncached pages. | 2026-03-09 |
+| EN-FIX1 | all | EN | Trust-signal extended to all page types | Reviewer byline + date only on homepage | `homepage-trust-signal.liquid` now renders on index, product, page, and article page types | 2026-03-09 |
+| EN-FIX3 | all | EN | Internal cross-links in trust signal | No internal links between pages | Added smart cross-link row (Science, FAQ, About, Blog) that filters current page, locale-aware | 2026-03-09 |
+| EN-FIX4a | /pages/about-us | EN | About page definition paragraph | No unique content, just shared trust badges | Added definition paragraph: "Hairgenetix is a Netherlands-based hair health company..." + clinical evidence paragraph with 3 PubMed citations | 2026-03-09 |
+| EN-FIX4b | /products/... | EN | Product definition paragraph | Generic product description only | Added: "The Hairgenetix Meso-Infusion System is an at-home hair mesotherapy kit..." with 2 PubMed links | 2026-03-09 |
+| EN-FIX4c | /pages/the-science | EN | Science page definition paragraph | Empty body_html (0 chars) | Added 515-char definition with copper peptide and mesotherapy PubMed links | 2026-03-09 |
+| EN-FIX5a | /pages/the-science | all | Science page FAQPage schema | No FAQ section/schema | 5-question multilingual (EN/DE/NL/FR/ES/IT) FAQPage schema in `seo-schema-science-faq.liquid` | 2026-03-09 |
+| EN-FIX5b | /pages/about-us | all | About page FAQPage schema | No FAQ section/schema | 5-question multilingual FAQPage schema in `seo-schema-about-faq.liquid` | 2026-03-09 |
+| EN-FIX5c | /blogs/.../hair-mesotherapy | all | Blog article FAQPage schema | No FAQ section/schema | 5-question multilingual FAQPage schema in `seo-schema-blog-faq.liquid` | 2026-03-09 |
+| EN-FIX7 | multiple | EN | PubMed inline citations | No PubMed links in body content | Added inline PubMed links in about, product, and science page body_html (GHK-Cu, mesotherapy review) | 2026-03-09 |
+| TECH | all | all | FAQ schema architecture refactor | FAQ schemas embedded in seo-schema-content.liquid (rendering issues) | Extracted to 3 separate snippets (science-faq, about-faq, blog-faq), rendered from seo-schema.liquid. Fixes silent rendering failures. | 2026-03-09 |
 
 ---
 
@@ -149,6 +163,115 @@ Verified working on NL homepage and product pages. DE homepage pending CDN cache
 | 2 | 2026-03-09 | / | EN | GPT-4o (9.05) | Gemini (8.85) | 8.95 | page-audit-2026-03-09-en-homepage-r2.md |
 | 1 | 2026-03-09 | /nl | NL | GPT-4o (5.05) | Gemini (5.05) | 5.05 | page-audit-2026-03-09-nl-homepage.md |
 | 2 | 2026-03-09 | /nl | NL | GPT-4o (6.75) | Gemini (7.05) | 6.90 | page-audit-2026-03-09-nl-homepage-r2.md |
+| 1 | 2026-03-09 | /fr | FR | GPT-4o (8.35) | Gemini (7.10) | 7.72 | page-audit-2026-03-09-fr-homepage.md |
+| 1 | 2026-03-09 | /es | ES | GPT-4o (7.80) | Gemini (8.05) | 7.93 | page-audit-2026-03-09-es-homepage.md |
+| 1 | 2026-03-09 | /it | IT | GPT-4o (7.95) | Gemini (8.25) | 8.10 | page-audit-2026-03-09-it-homepage.md |
+| 1 | 2026-03-09 | /sv | SV | GPT-4o (7.25) | Gemini (7.25) | 7.25 | page-audit-2026-03-09-sv-homepage.md |
+| 1 | 2026-03-09 | /da | DA | GPT-4o (7.60) | Gemini (8.25) | 7.92 | page-audit-2026-03-09-da-homepage.md |
+| 1 | 2026-03-09 | /no | NO | GPT-4o (8.25) | Gemini (6.05) | 7.15 | page-audit-2026-03-09-no-homepage.md |
+| 1 | 2026-03-09 | / | EN | GPT-4o (6.85) | Claude (6.55) | 6.70 | page-audit-2026-03-09-en-homepage.md |
+| 1 | 2026-03-09 | /products/... | EN | GPT-4o (5.55) | Claude (5.65) | 5.60 | page-audit-2026-03-09-en-product.md |
+| 1 | 2026-03-09 | /pages/the-science | EN | GPT-4o (4.30) | Claude (4.45) | 4.38 | page-audit-2026-03-09-en-science.md |
+| 1 | 2026-03-09 | /blogs/.../hair-mesotherapy | EN | GPT-4o (4.15) | Claude (4.75) | 4.45 | page-audit-2026-03-09-en-blog-mesotherapy.md |
+| 1 | 2026-03-09 | /pages/faqs | EN | GPT-4o (5.50) | Claude (5.10) | 5.30 | page-audit-2026-03-09-en-faq.md |
+| 1 | 2026-03-09 | /pages/about-us | EN | GPT-4o (3.15) | Claude (2.75) | 2.95 | page-audit-2026-03-09-en-about.md |
+| 1 | 2026-03-09 | /de/products/... | DE | GPT-4o (6.75) | Gemini (4.25) | 5.50 | page-audit-2026-03-09-de-product.md |
+| 1 | 2026-03-09 | /de/pages/the-science | DE | GPT-4o (7.20) | Gemini (6.70) | 6.95 | page-audit-2026-03-09-de-science.md |
+| 1 | 2026-03-09 | /de/blogs/.../hair-mesotherapy | DE | GPT-4o (6.70) | Gemini (7.50) | 7.10 | page-audit-2026-03-09-de-blog-mesotherapy.md |
+| 1 | 2026-03-09 | /de/pages/faqs | DE | GPT-4o (5.35) | Gemini (4.50) | 4.92 | page-audit-2026-03-09-de-faq.md |
+| 1 | 2026-03-09 | /de/pages/about-us | DE | GPT-4o (3.10) | Gemini (7.75) | 5.42 | page-audit-2026-03-09-de-about.md |
+
+---
+
+## EN Full Site Audit Summary
+
+| Page | Score | Passing | Worst Criterion | Critical Issue |
+|------|-------|---------|----------------|---------------|
+| Homepage | 6.70 | 2/20 | Heading hierarchy (3.0) | No H1-H6 tags, no comparison content |
+| Product (Bestseller) | 5.60 | 1/20 | Comparison (3.0), Author (3.0) | No internal links to content pages |
+| FAQ | 5.30 | 2/20 | Author (1.0), Medical review (1.0) | No author, no reviewer, no dates |
+| Blog (Mesotherapy) | 4.45 | 1/20 | FAQ section (1.5) | H2s are marketing slogans, not content structure |
+| Science Pillar | 4.38 | 0/20 | FAQ (1.0), Comparison (2.0), Definition (2.0) | **CRITICAL: No actual science content — trust badges only** |
+| About | 2.95 | 0/20 | Author (1.5), Medical (1.0), FAQ (1.0) | **CRITICAL: No unique about content at all** |
+
+**EN Site Average: 4.83 / 10**
+
+### Cross-Page Patterns (EN)
+
+| Issue | Pages Affected | Fix Type | Effort |
+|-------|---------------|----------|--------|
+| No author attribution | ~~All except homepage~~ **FIXED** | Trust-signal extended to all pages | **DONE** |
+| No medical review signal | ~~Product, FAQ, Blog, About~~ **FIXED** | Trust-signal extended to all pages | **DONE** |
+| No recency date | ~~Product, FAQ, About~~ **FIXED** | Trust-signal extended to all pages | **DONE** |
+| No internal linking | ~~All 6 pages~~ **FIXED** | Cross-links in trust signal | **DONE** |
+| No definition paragraphs | ~~About, Product, Science~~ **FIXED** (FAQ needs alt approach) | body_html additions | **DONE** (3/4) |
+| No FAQ section | ~~Science, Blog, About~~ **FIXED** | FAQ schemas in separate snippets | **DONE** (CDN pending) |
+| No PubMed citations | ~~About, Product, Science~~ **FIXED** | Inline PubMed links in body_html | **DONE** |
+| Poor heading hierarchy | All 6 pages | Theme template restructure | SANDBOX — H2s are marketing, not content |
+| No comparison content | All except FAQ | Tables/lists needed | SANDBOX |
+| Science page has no science | Science | Content rewrite | SANDBOX — needs real scientific content |
+| About page thin content | About | Content rewrite | SANDBOX — body enhanced but still thin |
+| Blog article not extractable | Blog | Content restructure | SANDBOX — H2s need to be questions |
+
+---
+
+## DE Full Site Audit Summary
+
+| Page | Score | Passing | Worst Criterion | Critical Issue |
+|------|-------|---------|----------------|---------------|
+| Homepage | 8.35 (R2) | 8/20 | Author attribution (6.5) | Already improved from 5.35 |
+| Blog (Mesotherapy) | 6.93 | 2/20 | Author attribution (2.5) | No author byline |
+| Product (Bestseller) | 6.67 | 0/20 | Author attribution (4.0) | No internal links, no recency |
+| FAQ | 6.03 | 2/20 | Medical review (1.5) | No expert signal, no dates |
+| About | 5.42 | 0/20 | Author attribution (2.0) | THIN CONTENT — almost empty visible body |
+| Science Pillar | 5.18 | 0/20 | FAQ section (2.0) | No FAQ, poor heading hierarchy |
+
+**DE Site Average: 6.43 / 10**
+
+### Cross-Page Patterns (DE)
+
+| Issue | Pages Affected | Fix Type | Effort |
+|-------|---------------|----------|--------|
+| No author attribution | All 6 | Schema + visible byline | LOW — reuse trust-signal pattern |
+| No medical review signal | Product, FAQ, About | Schema + visible signal | LOW — extend trust-signal |
+| No recency date | Product, Science, FAQ, About | Schema + visible date | LOW — extend trust-signal |
+| Poor internal linking | Product, Science, About | Content links | LOW — add contextual links |
+| No FAQ section | Science, About | Schema + visible Q&A | MEDIUM |
+| Thin visible content | About | Content rewrite | MEDIUM — ASK MALCOLM |
+| No comparison content | Science, FAQ | Tables/lists | MEDIUM |
+| Poor heading hierarchy | Science, FAQ, Blog | H1/H2/H3 restructure | MEDIUM — theme template changes |
+| Product description in English on DE page | Product | Translation fix | LOW — Shopify translation |
+
+---
+
+## Cross-Language Comparison (All Homepages, Latest Round)
+
+| Language | Score | Passing | Strongest | Weakest |
+|----------|-------|---------|-----------|---------|
+| EN | 8.95 (R2) | 14/20 | Schema (10.0), FAQ (10.0), Medical (10.0) | Multi-modal (7.5) |
+| DE | 8.35 (R2) | 8/20 | Comparison (9.5), FAQ (9.5) | Author attribution (6.5) |
+| IT | 8.10 (R1) | 4/20 | Schema (9.5), Internal linking (9.5) | Definition (5.5) |
+| ES | 7.93 (R1) | 4/20 | Schema (9.5), FAQ (9.5) | Comparison (5.5) |
+| DA | 7.92 (R1) | 5/20 | FAQ (9.5), Fact density (9.0) | Comparison (5.5) |
+| FR | 7.72 (R1) | 4/20 | Schema (9.5), FAQ (9.5) | Comparison (4.5) |
+| SV | 7.25 (R1) | 1/20 | Medical review (9.0) | Comparison (4.5) |
+| NO | 7.15 (R1) | 1/20 | FAQ (9.5) | Comparison (4.0) |
+| NL | 6.90 (R2) | 2/20 | Medical review (9.0) | Comparison (2.5*) |
+
+**Site-wide average:** 7.70 / 10
+**Weakest languages:** NO (7.15), SV (7.25), NL (6.90)
+**Strongest languages:** EN (8.95), DE (8.35), IT (8.10)
+
+### Common Gaps Across All Languages
+
+| Criterion | Avg Score | Priority |
+|-----------|-----------|----------|
+| Comparison content | 5.2 | HIGH — missing comparison tables everywhere |
+| Definition paragraph | 6.2 | HIGH — no clear extractable definition |
+| Content depth | 6.5 | MEDIUM — varies by language |
+| List/table format | 6.8 | MEDIUM — clinical data not in tables |
+| Recency | 7.4 | LOW — trust signal exists but not always detected |
+| Answer-first format | 7.6 | LOW — page leads with product, not answer |
 
 ---
 
