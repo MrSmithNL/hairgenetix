@@ -1,7 +1,7 @@
 # SEO+AISO Audit Tracker — hairgenetix.com
 
 > Last updated: 2026-03-09
-> Status: Round 2 complete (8.35/10) — triage pending for remaining items
+> Status: EN Round 1 complete (6.70/10) — Round 1 fixes applied, re-audit pending
 
 ---
 
@@ -10,7 +10,7 @@
 | Language | Pages Audited | Avg Score | Last Audit | Status |
 |----------|--------------|-----------|------------|--------|
 | DE | 1 | 8.35 | 2026-03-09 | Round 2: 8.35/10 (+3.0 from R1), triage pending |
-| EN | 0 | — | — | Not started |
+| EN | 1 | 6.70 | 2026-03-09 | Round 1: 6.70/10, fixes in progress |
 | NL | 0 | — | — | Not started |
 | FR | 0 | — | — | Not started |
 | ES | 0 | — | — | Not started |
@@ -46,6 +46,31 @@
 | 019 | /de | DE | Brand mention readiness | 7.5 | 9 | 8 | 8.5 | — | FIX LATER | Open |
 | 020 | /de | DE | AI citation readiness | 5.5 | 7 | 8 | 7.5 | Improves from other fixes | FIX LATER | Open |
 
+### EN Homepage — Round 1 Issues (correct URL: / not /en)
+
+| ID | Page | Lang | Criterion | R1 GPT | R1 Gemini | R1 Avg | Recommendation | Verdict | Status |
+|----|------|------|-----------|--------|-----------|--------|---------------|---------|--------|
+| E001 | / | EN | Answer-first format | 7 | 8 | 7.5 | Lead hero with summary, not just "REVERSE YOUR HAIR LOSS" | FIX LATER | Open |
+| E002 | / | EN | Definition paragraph | 5 | 5 | 5.0 | Add brand definition to hero subtitle | FIX NOW | Open |
+| E003 | / | EN | Heading hierarchy | 6 | 6 | 6.0 | Fix H6 product subtitles → H3/H4 | FIX NOW | Open |
+| E004 | / | EN | Atomic paragraphs | 8 | 7 | 7.5 | Break remaining long paragraphs | FIX LATER | Open |
+| E005 | / | EN | Fact density | 7 | 8 | 7.5 | Add visible citations | FIX LATER | Open |
+| E006 | / | EN | Comparison content | 8 | 9 | 8.5 | — | DEFER | Open |
+| E007 | / | EN | List/table format | 6 | 5 | 5.5 | Present clinical stats in structured table | FIX NOW | Open |
+| E008 | / | EN | Content depth | 8 | 7 | 7.5 | Expand scientific explanations | FIX LATER | Open |
+| E009 | / | EN | Front-loading | 7 | 8 | 7.5 | Ensure key benefits in first 30% | FIX LATER | Open |
+| E010 | / | EN | Multi-modal | 9 | 6 | 7.5 | Models disagree; video exists | DEFER | Open |
+| E011 | / | EN | Schema markup | 7 | 9 | 8.0 | Cache pending — schemas deployed | WAIT | Open |
+| E012 | / | EN | FAQ section | 9 | 10 | 9.5 | — | PASS | Closed |
+| E013 | / | EN | Citation quality | 5 | 4 | 4.5 | Add visible PubMed/DOI links | FIX NOW | Open |
+| E014 | / | EN | Internal linking | 8 | 7 | 7.5 | Add more contextual content links | FIX LATER | Open |
+| E015 | / | EN | Meta optimization | 9 | 9 | 9.0 | — | PASS | Closed |
+| E016 | / | EN | Author attribution | 4 | 3 | 3.5 | Cache pending — trust signal deployed | WAIT | Open |
+| E017 | / | EN | Medical/expert review | 5 | 4 | 4.5 | Cache pending — Dr. Bodde schema deployed | WAIT | Open |
+| E018 | / | EN | Recency | 4 | 5 | 4.5 | Cache pending — last-updated deployed | WAIT | Open |
+| E019 | / | EN | Brand mention readiness | 6 | 8 | 7.0 | Add quotable brand definition | FIX NOW | Open |
+| E020 | / | EN | AI citation readiness | 6 | 6 | 6.0 | Improves from other fixes | FIX LATER | Open |
+
 ### Technical Issue — RESOLVED
 
 **seo-schema.liquid truncation (FIXED):** The 120KB/2364-line file was silently truncated by Shopify's Liquid renderer. Fixed by splitting into 5 files:
@@ -77,6 +102,9 @@ Verified working on NL homepage and product pages. DE homepage pending CDN cache
 | 009 | /de | DE | Front-loading via hero subtitle | Generic subtitle, key claims lower on page | Brand definition with key claims now in hero subtitle (first visible text) | 2026-03-09 |
 | TECH | all | all | Split seo-schema.liquid (120KB → 5 files) | Single 120KB file silently truncated by Shopify Liquid renderer | Split into 5 snippet files (15KB + 24KB + 58KB + 12KB + 11KB) with `{% render %}` calls; uses `request.page_type` instead of `template.name` | 2026-03-09 |
 | 016+018 | all | all | Visible trust signal: author byline + last-updated date | No visible author or date on homepage | `homepage-trust-signal.liquid` renders "Medically reviewed by Dr. Esther Bodde (MD) · Last updated: [month] [year]" in 9 languages, between main content and footer | 2026-03-09 |
+| E002+E019 | / | EN | Hero subtitle → brand definition | Generic "Regrow your hair and your confidence..." | "Hairgenetix is a professional at-home hair mesotherapy system — with copper peptides and micro-infusion clinically proven to stop hair loss and promote new growth." | 2026-03-09 |
+| E013 | / | all | Visible PubMed citations in trust signal | No visible citations on homepage | 3 PubMed links (Pickart 2012, Mesotherapy Review 2023, Copper Peptides & Hair 2019) in trust signal, all 9 languages | 2026-03-09 |
+| E003 | / | all | Product subtitle headings H6 → H4 | H6 for product subtitles (XS) | H4 (M) in both featured-products sections | 2026-03-09 |
 
 ---
 
@@ -86,6 +114,7 @@ Verified working on NL homepage and product pages. DE homepage pending CDN cache
 |-------|------|------|------|-------------|-------------|---------------|-------------|
 | 1 | 2026-03-08 | /de | DE | GPT-4o (5.2) | Llama 3.3 70B (5.5) | 5.35 | page-audit-2026-03-08-de-homepage.md |
 | 2 | 2026-03-09 | /de | DE | GPT-4o (8.6) | Gemini (8.1) | 8.35 | page-audit-2026-03-09-de-homepage.md |
+| 1 | 2026-03-09 | / | EN | GPT-4o (6.7) | Gemini (6.65) | 6.70 | page-audit-2026-03-09-en-homepage.md |
 
 ---
 
