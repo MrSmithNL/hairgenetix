@@ -1,7 +1,7 @@
 # SEO+AISO Audit Tracker — hairgenetix.com
 
 > Last updated: 2026-03-09
-> Status: EN Round 2 complete (8.95/10) — triage pending for remaining items
+> Status: NL Round 1 complete (5.05/10) — fixes in progress
 
 ---
 
@@ -11,7 +11,7 @@
 |----------|--------------|-----------|------------|--------|
 | DE | 1 | 8.35 | 2026-03-09 | Round 2: 8.35/10 (+3.0 from R1), triage pending |
 | EN | 1 | 8.95 | 2026-03-09 | Round 2: 8.95/10 (+2.25 from R1), triage pending |
-| NL | 0 | — | — | Not started |
+| NL | 1 | 5.05 | 2026-03-09 | Round 1: 5.05/10, fixes in progress |
 | FR | 0 | — | — | Not started |
 | ES | 0 | — | — | Not started |
 | IT | 0 | — | — | Not started |
@@ -71,6 +71,31 @@
 | E019 | / | EN | Brand mention readiness | 7.0 | 9 | 9 | 9.0 | — | PASS | Closed |
 | E020 | / | EN | AI citation readiness | 6.0 | 9 | 9 | 9.0 | — | PASS | Closed |
 
+### NL Homepage — Round 1 Results
+
+| ID | Page | Lang | Criterion | R1 GPT | R1 Gemini | R1 Avg | Recommendation | Verdict | Status |
+|----|------|------|-----------|--------|-----------|--------|---------------|---------|--------|
+| N001 | /nl | NL | Answer-first format | 7 | 6 | 6.5 | Brand definition in hero will improve | FIX LATER | Open |
+| N002 | /nl | NL | Definition paragraph | 3 | 2 | 2.5 | Add Dutch brand definition to hero subtitle | FIX NOW | Open |
+| N003 | /nl | NL | Heading hierarchy | 2 | 1 | 1.5 | Fix English H4s, testimonial H2s, H6 product subtitles | FIX NOW | Open |
+| N004 | /nl | NL | Atomic paragraphs | 8 | 5 | 6.5 | Break longer paragraphs | FIX LATER | Open |
+| N005 | /nl | NL | Fact density | 6 | 7 | 6.5 | Add more clinical data points | FIX LATER | Open |
+| N006 | /nl | NL | Comparison content | 4 | 3 | 3.5 | Add comparison section | FIX LATER | Open |
+| N007 | /nl | NL | List/table format | 5 | 4 | 4.5 | Add clinical results table | FIX LATER | Open |
+| N008 | /nl | NL | Content depth | 6 | 6 | 6.0 | Science pages provide depth | DEFER | Open |
+| N009 | /nl | NL | Front-loading | 7 | 5 | 6.0 | Reorder with key claims first | FIX LATER | Open |
+| N010 | /nl | NL | Multi-modal | 7 | 7 | 7.0 | Add infographic | DEFER | Open |
+| N011 | /nl | NL | Schema markup | 4 | 4 | 4.0 | Translate FAQ + ItemList schemas to Dutch | FIX NOW | Open |
+| N012 | /nl | NL | FAQ section | 5 | 3 | 4.0 | Translate FAQ to Dutch | FIX NOW | Open |
+| N013 | /nl | NL | Citation quality | 8 | 8 | 8.0 | Already good — PubMed links visible | FIX LATER | Open |
+| N014 | /nl | NL | Internal linking | 6 | 4 | 5.0 | Add contextual links | FIX LATER | Open |
+| N015 | /nl | NL | Meta optimization | 3 | 5 | 4.0 | Fix missing title tag | FIX NOW | Open |
+| N016 | /nl | NL | Author attribution | 2 | 7 | 4.5 | Verify trust signal renders in Dutch | FIX NOW | Open |
+| N017 | /nl | NL | Medical/expert review | 5 | 7 | 6.0 | Dr. Bodde already in schema | FIX LATER | Open |
+| N018 | /nl | NL | Recency | 4 | 5 | 4.5 | Verify trust signal date renders | FIX NOW | Open |
+| N019 | /nl | NL | Brand mention readiness | 2 | 5 | 3.5 | Brand definition will fix this | FIX NOW | Open |
+| N020 | /nl | NL | AI citation readiness | 3 | 5 | 4.0 | Improves from other fixes | FIX LATER | Open |
+
 ### Technical Issue — RESOLVED
 
 **seo-schema.liquid truncation (FIXED):** The 120KB/2364-line file was silently truncated by Shopify's Liquid renderer. Fixed by splitting into 5 files:
@@ -116,6 +141,7 @@ Verified working on NL homepage and product pages. DE homepage pending CDN cache
 | 2 | 2026-03-09 | /de | DE | GPT-4o (8.6) | Gemini (8.1) | 8.35 | page-audit-2026-03-09-de-homepage.md |
 | 1 | 2026-03-09 | / | EN | GPT-4o (6.7) | Gemini (6.65) | 6.70 | page-audit-2026-03-09-en-homepage.md |
 | 2 | 2026-03-09 | / | EN | GPT-4o (9.05) | Gemini (8.85) | 8.95 | page-audit-2026-03-09-en-homepage-r2.md |
+| 1 | 2026-03-09 | /nl | NL | GPT-4o (5.05) | Gemini (5.05) | 5.05 | page-audit-2026-03-09-nl-homepage.md |
 
 ---
 
