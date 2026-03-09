@@ -102,7 +102,7 @@
 - `seo-schema.liquid` (15KB) — locale vars + Organization + BreadcrumbList + render calls
 - `seo-schema-product.liquid` (24KB) — Product + Product FAQ schemas
 - `seo-schema-faq-page.liquid` (58KB) — Dedicated FAQ page schema
-- `seo-schema-homepage.liquid` (12KB) — Homepage FAQPage + WebPage + ItemList
+- `seo-schema-homepage.liquid` (14KB) — Homepage FAQPage + WebPage + ItemList + Table (comparison)
 - `seo-schema-content.liquid` (11KB) — HowTo + Article + Blog + WebPage + Collection
 
 Also uses `request.page_type` (global) instead of `template.name` (not available in `{% render %}` scope).
@@ -133,6 +133,7 @@ Verified working on NL homepage and product pages. DE homepage pending CDN cache
 | N002+N019 | /nl | NL | Hero subtitle → Dutch brand definition | Generic "Laat je haar en je zelfvertrouwen teruggroeien..." | "Hairgenetix is een professioneel haarmesotherapiesysteem voor thuisgebruik — met koperpeptiden en micro-infusie klinisch bewezen om haaruitval te stoppen en nieuwe groei te bevorderen." | 2026-03-09 |
 | N011+N012 | /nl | NL | FAQ + ItemList schemas translated to Dutch | English FAQ and ItemList in schema | 7-question Dutch FAQPage + 4-item Dutch ItemList | 2026-03-09 |
 | N016+N017 | /nl | NL | WebPage reviewer title localized | German "Kosmetische & medizinische Ärztin" | Dutch "Cosmetisch & medisch arts (MD)" + localized for all languages | 2026-03-09 |
+| ALL | all | all | Table schema for comparison content | Comparison table only in visible HTML, not in structured data | `Table` schema.org JSON-LD with localized names/descriptions for all 9 languages in seo-schema-homepage.liquid | 2026-03-09 |
 
 ---
 
