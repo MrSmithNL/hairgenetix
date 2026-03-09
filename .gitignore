@@ -17,3 +17,7 @@ Thumbs.db
 *.key
 *.pem
 credentials.json
+
+# MkDocs
+site/
+encryptcontent.cache

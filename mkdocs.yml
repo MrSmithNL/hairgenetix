@@ -1,0 +1,72 @@
+site_name: "Hairgenetix (CLIENT-002)"
+site_url: https://mrsmithnl.github.io/hairgenetix/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: green
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: green
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+  - encryptcontent:
+      global_password: !ENV [DOCS_PASSWORD, 'SmithAI2026!']
+      search_index: encrypted
+      remember_password: true
+      session_storage: true
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+  - attr_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Home: index.md
+  - Strategy:
+      - Strategic OS: strategic-os.md
+      - SEO Strategy: seo-strategy.md
+      - Content Strategy: content-strategy.md
+      - Keyword Strategy: keyword-strategy.md
+      - Competitor Analysis: competitor-analysis.md
+  - Operations:
+      - Architecture: architecture.md
+      - Processes & Flows: processes-and-flows.md
+      - Metrics: metrics.md
+      - Todo: todo.md
+      - Decisions Log: decisions-log.md
+  - Audits:
+      - Audit Extraction (2026-03-08): audit-extraction-2026-03-08.md
+      - QA Checklist (2026-03-08): qa-checklist-2026-03-08.md
+      - Page Audits:
+          - Tracker: audits/tracker-hairgenetix.md
+          - DE Homepage (2026-03-08): audits/page-audit-2026-03-08-de-homepage.md
+          - DE Homepage (2026-03-09): audits/page-audit-2026-03-09-de-homepage.md
+          - EN Homepage (2026-03-09): audits/page-audit-2026-03-09-en-homepage.md
+          - EN Homepage R2 (2026-03-09): audits/page-audit-2026-03-09-en-homepage-r2.md
+          - NL Homepage (2026-03-09): audits/page-audit-2026-03-09-nl-homepage.md
+          - NL Homepage R2 (2026-03-09): audits/page-audit-2026-03-09-nl-homepage-r2.md
+  - Security:
+      - Accounts & Access: accounts-and-access.md
+      - Security Risk Log: security-risk-log.md
