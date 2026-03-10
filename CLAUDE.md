@@ -71,12 +71,60 @@ After any change to strategy, infrastructure, tools, or accounts:
 
 ---
 
+## Code Quality Enforcement
+
+| Tool | What It Checks | Config File |
+|------|---------------|-------------|
+| **ruff** | Python lint + format | `ruff.toml` |
+| **markdownlint** | Markdown style | `.markdownlint.yaml` |
+| **detect-secrets** | Hardcoded secrets | `.secrets.baseline` |
+| **yamllint** | YAML validity | (relaxed preset) |
+| **pre-commit** | All hooks on commit | `.pre-commit-config.yaml` |
+
+**CI pipelines** (`.github/workflows/`):
+- `ci.yml` — Python lint, Markdown lint, secret scan, YAML validation (runs on push/PR to main)
+- `codeql.yml` — GitHub CodeQL SAST for Python (weekly + on script changes)
+- `docs.yml` — MkDocs documentation deployment
+
+**Scripts require `SHOPIFY_ACCESS_TOKEN` environment variable** — tokens must never be hardcoded.
+
+### Running locally
+
+```bash
+# Install tools
+pip install ruff pre-commit detect-secrets
+
+# Set up pre-commit hooks (one-time)
+pre-commit install
+
+# Run all checks
+pre-commit run --all-files
+
+# Or individually
+ruff check scripts/
+ruff format --check scripts/
+```
+
+---
+
 ## Folder Structure
 
 ```
 hairgenetix/
 ├── CLAUDE.md                          ← This file
 ├── README.md                          ← Project overview
+├── ruff.toml                          ← Python linter config
+├── .markdownlint.yaml                 ← Markdown linter config
+├── .pre-commit-config.yaml            ← Pre-commit hooks
+├── .secrets.baseline                  ← Secret detection baseline
+├── mkdocs.yml                         ← MkDocs site config
+├── .github/workflows/
+│   ├── ci.yml                         ← Lint + quality CI
+│   ├── codeql.yml                     ← CodeQL SAST
+│   └── docs.yml                       ← MkDocs deployment
+├── scripts/
+│   ├── fix-norwegian.py               ← Norwegian translation fix
+│   └── register-meta-translations.py  ← Bulk translation registration
 ├── docs/
 │   ├── architecture.md                ← System diagram + integrations
 │   ├── todo.md                        ← Tasks with IDs and priorities

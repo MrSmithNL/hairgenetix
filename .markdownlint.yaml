@@ -1,0 +1,19 @@
+# Markdownlint configuration for Hairgenetix docs
+# Docs: https://github.com/DavidAnson/markdownlint
+
+# Line length - relaxed for documentation repos
+MD013:
+  line_length: 300
+
+# Allow inline HTML (needed for MkDocs features)
+MD033: false
+
+# Allow duplicate headings (common in audit docs)
+MD024:
+  siblings_only: true
+
+# Allow trailing punctuation in headings (question marks, etc.)
+MD026: false
+
+# Allow multiple top-level headings (some docs need it)
+MD025: false

@@ -1,0 +1,94 @@
+name: CI — Lint & Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint-python:
+    name: Python Lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Ruff lint
+        run: ruff check scripts/
+
+      - name: Ruff format check
+        run: ruff format --check scripts/
+
+  lint-markdown:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Lint markdown
+        run: markdownlint 'docs/**/*.md' '*.md' --config .markdownlint.yaml
+
+  secret-scan:
+    name: Secret Detection
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install detect-secrets
+        run: pip install detect-secrets
+
+      - name: Scan for secrets
+        run: |
+          detect-secrets scan --all-files --exclude-files '\.secrets\.baseline$' \
+            | python3 -c "
+          import json, sys
+          data = json.load(sys.stdin)
+          results = data.get('results', {})
+          count = sum(len(v) for v in results.values())
+          if count > 0:
+              print(f'FAIL: {count} potential secret(s) found:')
+              for f, secrets in results.items():
+                  for s in secrets:
+                      print(f'  {f}:{s[\"line_number\"]} — {s[\"type\"]}')
+              sys.exit(1)
+          print('OK: No secrets detected.')
+          "
+
+  yaml-validate:
+    name: YAML Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Lint YAML files
+        run: yamllint -d relaxed mkdocs.yml .github/workflows/ .pre-commit-config.yaml

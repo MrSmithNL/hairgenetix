@@ -21,3 +21,6 @@ credentials.json
 # MkDocs
 site/
 encryptcontent.cache
+
+# Linter caches
+.ruff_cache/

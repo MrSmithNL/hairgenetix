@@ -1,0 +1,32 @@
+# Ruff linter + formatter configuration for Hairgenetix scripts
+# Docs: https://docs.astral.sh/ruff/
+
+target-version = "py312"
+line-length = 200  # Relaxed — scripts contain long translation strings
+
+[lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "S",    # flake8-bandit (security)
+    "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "UP",   # pyupgrade
+    "SIM",  # flake8-simplify
+]
+ignore = [
+    "E501",  # line-too-long (translation data strings are naturally long)
+    "S603",  # subprocess-without-shell-check (we use curl intentionally)
+    "S607",  # start-process-with-partial-path (curl is fine)
+]
+
+[lint.per-file-ignores]
+"scripts/*.py" = [
+    "S105",  # hardcoded-password-string (false positive on digest strings)
+]
+
+[format]
+quote-style = "double"
+indent-style = "space"
