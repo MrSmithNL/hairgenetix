@@ -1,0 +1,14 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "runners": ["axe"],
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox"]
+    }
+  },
+  "urls": [
+    "https://hairgenetix.com",
+    "https://hairgenetix.com/collections/all",
+    "https://hairgenetix.com/products/hairgenetix-hair-growth-serum"
+  ]
+}

@@ -1,0 +1,52 @@
+name: Code Review
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  complexity-check:
+    name: Complexity Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install radon
+        run: pip install radon
+
+      - name: Check cyclomatic complexity
+        run: |
+          echo "## Cyclomatic Complexity Report" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          radon cc scripts/ -s -a -nc >> $GITHUB_STEP_SUMMARY 2>&1
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+          # Fail if any function is rated F
+          if radon cc scripts/ -s -nc | grep -q " F "; then
+            echo "::error::One or more functions have complexity rating F"
+            exit 1
+          fi
+
+  duplication-check:
+    name: Duplication Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run jscpd duplication detection
+        run: |
+          npx jscpd scripts/ \
+            --threshold 5 \
+            --reporters consoleFull \
+            --format "python" \
+            --ignore "node_modules,__pycache__,.venv"
