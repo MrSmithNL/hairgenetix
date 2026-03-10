@@ -1,5 +1,12 @@
 # Project Instructions — Hairgenetix (CLIENT-002)
 
+<!-- project-classification
+type: client
+work_nature: content-site
+hierarchy_position: client-delivery
+enforcement_profile: light
+-->
+
 These instructions apply to this project in every session.
 
 ---
