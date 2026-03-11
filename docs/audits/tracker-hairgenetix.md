@@ -1,7 +1,7 @@
 # SEO+AISO Audit Tracker — hairgenetix.com
 
-> Last updated: 2026-03-09
-> Status: Full EN + DE site audits complete (12 pages). EN site avg 4.83, DE site avg 6.43. About pages critical on both.
+> Last updated: 2026-03-11
+> Status: **FULL EN SITE AUDIT COMPLETE.** 12 pages audited. Site avg 6.2/10. SoM: 0% ChatGPT, 20% Gemini. Critical gaps: author attribution, PubMed links, internal linking, ingredients page. See `site-audit-2026-03-11-en.md` for full report.
 
 ---
 
@@ -10,7 +10,7 @@
 | Language | Pages Audited | Avg Score | Last Audit | Status |
 |----------|--------------|-----------|------------|--------|
 | DE | 6 | 6.22 | 2026-03-09 | Full site audit: Homepage 8.35, Product 5.50, Science 6.95, Blog 7.10, FAQ 4.92, About 5.42 |
-| EN | 6 | 4.83 | 2026-03-09 | Full site audit: Homepage 6.70, Product 5.60, Science 4.38, Blog 4.45, FAQ 5.30, About 2.95 |
+| EN | **12** | **6.2** | 2026-03-11 | **Full site audit:** Homepage 7.8, Serum 5.5, Meso Kit 6.8, Science 6.0, Ingredients 4.0, FAQ 4.8, About 5.9, Blog-CP 5.4, Blog-Meso 5.7, Hair Loss 5.2, Research Hub 7.2, Reviews 4.0. **SoM: 0% ChatGPT, 20% Gemini.** |
 | NL | 1 | 6.90 | 2026-03-09 | Round 2: 6.90/10 (+1.85 from R1), heading/comparison pending |
 | FR | 1 | 7.72 | 2026-03-09 | Round 1: 7.72/10, 4/20 passing |
 | ES | 1 | 7.93 | 2026-03-09 | Round 1: 7.93/10, 4/20 passing |
@@ -150,6 +150,26 @@ Uses `request.page_type` (global) instead of `template.name` (not available in `
 | EN-FIX5c | /blogs/.../hair-mesotherapy | all | Blog article FAQPage schema | No FAQ section/schema | 5-question multilingual FAQPage schema in `seo-schema-blog-faq.liquid` | 2026-03-09 |
 | EN-FIX7 | multiple | EN | PubMed inline citations | No PubMed links in body content | Added inline PubMed links in about, product, and science page body_html (GHK-Cu, mesotherapy review) | 2026-03-09 |
 | TECH | all | all | FAQ schema architecture refactor | FAQ schemas embedded in seo-schema-content.liquid (rendering issues) | Extracted to 3 separate snippets (science-faq, about-faq, blog-faq), rendered from seo-schema.liquid. Fixes silent rendering failures. | 2026-03-09 |
+| R3-001 | all | EN | Trust signal migrated from footer to main content | Trust signal in `snippets/footer-trust-signal.liquid` rendered in footer — invisible to AI extraction tools | Trust signal added to main content area of all 6 EN pages (body_html for Product/Blog/About, custom-liquid section for Home/Science/FAQ). Snippet deleted. | 2026-03-10 |
+| R3-002 | all | EN | Footer trust signal removed | `footer-trust-signal.liquid` snippet rendered on all pages in footer (no AISO value) | Removed render call from `sections/footer.liquid`, deleted snippet file | 2026-03-10 |
+| R3-003 | /pages/the-science | EN | Science page full content rebuild | body_html empty, content only in schema. Science page scored 3.50/10 | Full rebuild using dual-tiles sections: copper peptides, PDRN, clinical evidence, research table, comparison table, FAQ accordion with 5 questions, link to FAQ page | 2026-03-09 |
+| R3-004 | /pages/about-us | EN | About page content enrichment | About page scored 4.90/10, thin content | Added: Our Story (founder narrative), Medical Advisory Board, What We Do (copper peptides + mesotherapy), Science summary, Milestones, Customers, Guarantee, 5 FAQ questions, 4 PubMed citations | 2026-03-09 |
+| R3-005 | /blogs/.../hair-mesotherapy | EN | Blog article image added | No images in blog article body | Optimized PNG→JPEG (90% reduction), uploaded to Shopify CDN, added after disclaimer | 2026-03-09 |
+| R3-006 | /pages/the-science | all | German jobTitle localized | Dr. Bodde's `jobTitle` hardcoded as "Kosmetische & medizinische Ärztin (MD)" on all locales | Added locale-aware `reviewer_job_title` variable in `seo-schema-content.liquid` with translations for all 9 languages. EN: "Cosmetic & Medical Physician (MD)" | 2026-03-10 |
+| R3-007 | Science, About | all | Empty dateModified/lastReviewed fixed | `page.updated_at` not available in Shopify Liquid — rendered as empty string in schema | Science page: hardcoded `2026-03-10`. About/other pages: switched to `page.published_at` which IS available in Shopify Liquid | 2026-03-10 |
+| R3-008 | all | all | FAQPage conditionals verified | Concern that science-faq, about-faq, blog-faq rendered on all pages | Verified: all 3 snippets have proper `page.handle` conditionals. Product page confirmed: exactly 1 FAQPage (product FAQ only) | 2026-03-10 |
+| R3-009 | /pages/faqs | all | FAQ typos fixed | "Mesptherapy" and "Mesotheray" in H3 question headings | Fixed both to "Mesotherapy" in `templates/page.faq.json` (blocks `tab_menu_qANYA8` Q4 and Q5) | 2026-03-10 |
+| R3-010 | /pages/faqs | all | Duplicate "Product Information" H2 fixed | Two FAQ tab sections both titled "Product Information" (one about products, one about returns) | Renamed second instance to "Returns & Policies" in `templates/page.faq.json` | 2026-03-10 |
+| R3-011 | Home, Product | all | Review H2 tag pollution fixed | Customer names rendered as `<h2>` (47 on homepage, 39 on product) — destroyed heading hierarchy | Changed `<h2 class="review_customer_name">` and `<h2 class="customer_short_review">` to `<p>` in `sw--review_highlight.liquid`; `<h2 class="customer_name">` to `<p>` in `sw--before_after.liquid` | 2026-03-10 |
+| R3-012 | Product | all | Product URL 404 redirect created | `/products/hair-meso-infusion-system-box-1-month` returned 404 (old handle) | Created Shopify redirect (ID: 990936498508) → `/products/hair-meso-infusion-system-box-4-vials-1-month` | 2026-03-10 |
+| R3-013 | Product | EN | Product trust signal verified | Concern that trust signal wasn't rendering on product page | Confirmed: trust signal present in body_html of product ID 15080908194124, correct URL is `/products/hair-meso-infusion-system-box-4-vials-1-month` | 2026-03-10 |
+| R3-014 | all | all | Social media URLs added to theme settings | Instagram + Facebook were blank, causing 8 empty sameAs in Shopify default Organization schema | Added `instagram.com/hair_genetix` and `facebook.com/hair_genetix` — custom Organization now has 3 sameAs, Shopify default reduced from 8→6 empty | 2026-03-10 |
+| R3-015 | all 5 | EN | Named author attribution on all pages | Trust signal only had "Medically reviewed by Dr. Esther Bodde" | Added "Written by Malcolm Smith, Founder of Hairgenetix ·" before medical reviewer on Blog, About (body_html), Home, Science, FAQ (custom-liquid sections) | 2026-03-10 |
+| R3-016 | FAQ | EN | FAQ answers enriched with citations + links | FAQ answers had no PubMed links, no internal links, no clinical data | 8 answers updated: added GHK-Cu/AHK-Cu PubMed links, internal links to /pages/the-science, /pages/guarantee, /products/..., clinical trial data (93%, 150 days) | 2026-03-10 |
+| R3-017 | Science | EN | Front-loaded definition paragraph | Science page body_html was empty (all content in theme sections) | Added 771-char definition: "Hair mesotherapy is a treatment where..." with 93% clinical result, 3 internal links (copper peptide, PDRN, about) | 2026-03-10 |
+| R3-018 | Blog | EN | FAQPage schema for blog FAQ section | Blog had visible FAQ section but no structured data | Added FAQPage JSON-LD in seo-schema-content.liquid with 5 Q&A pairs matching visible content, conditional on `article.content contains 'Frequently Asked Questions'` | 2026-03-10 |
+| R3-019 | Home | EN | Definition paragraph after hero | No extractable definition on homepage | Added custom-liquid section with "Hairgenetix is a Netherlands-based hair health company..." + 3 internal links, positioned after hero banner | 2026-03-10 |
+| R3-020 | About | EN | Additional internal links | About page had 9 internal links | Added 2 more contextual links (products collection, mesotherapy page). Now 10 internal links | 2026-03-10 |
 
 ---
 
@@ -180,6 +200,8 @@ Uses `request.page_type` (global) instead of `template.name` (not available in `
 | 1 | 2026-03-09 | /de/blogs/.../hair-mesotherapy | DE | GPT-4o (6.70) | Gemini (7.50) | 7.10 | page-audit-2026-03-09-de-blog-mesotherapy.md |
 | 1 | 2026-03-09 | /de/pages/faqs | DE | GPT-4o (5.35) | Gemini (4.50) | 4.92 | page-audit-2026-03-09-de-faq.md |
 | 1 | 2026-03-09 | /de/pages/about-us | DE | GPT-4o (3.10) | Gemini (7.75) | 5.42 | page-audit-2026-03-09-de-about.md |
+| 2 | 2026-03-09 | / (all 6 EN) | EN | Claude | — | 5.26 | en-round2-comparison-2026-03-09.md |
+| 3 | 2026-03-10 | / (all 6 EN) | EN | Claude | — | 6.43 | en-round3-comparison-2026-03-10.md |
 
 ---
 
@@ -284,3 +306,29 @@ Uses `request.page_type` (global) instead of `template.name` (not available in `
 | DEFER | Revisit next quarter |
 | SKIP | Not applicable or not feasible for this page type |
 | ASK MALCOLM | Needs business decision |
+
+---
+
+## Backlog — Known Issues
+
+| Page | Issue | Priority | Status |
+|------|-------|----------|--------|
+| `/pages/scientific-research-pdrn` | Duplicate content — currently a copy of the Scientific Research page. Needs full rewrite with unique PDRN-specific content. | High | Pending |
+| All pages | **Duplicate Organization schema** — Shopify `content_for_header` injects default Organization. Added Instagram + Facebook URLs to theme settings — reduced empty sameAs from 8→6. Custom Organization now has 3 sameAs (Trustpilot, Instagram, Facebook). Remaining empties from unused platforms (Twitter, YouTube, TikTok, etc.) | Low | **Improved 2026-03-10** |
+| Product, Home | **Multiple FAQPage schemas** — VERIFIED: science-faq, about-faq, blog-faq snippets have proper `page.handle` conditionals and do NOT render on wrong pages. Product page has exactly 1 FAQPage (product FAQ). | N/A | **Closed (not an issue)** |
+| Science, About | **Empty dateModified/lastReviewed** — `page.updated_at` not available in Shopify Liquid. Fixed: Science page uses hardcoded `2026-03-10`, About/other pages use `page.published_at`. | Medium | **Fixed 2026-03-10** |
+| Science | **German jobTitle on EN page** — Fixed: added locale-aware `reviewer_job_title` variable with translations for all 9 languages. EN now shows "Cosmetic & Medical Physician (MD)". | Medium | **Fixed 2026-03-10** |
+| FAQ | **Typos in H3 headings** — "Mesptherapy" and "Mesotheray" fixed to "Mesotherapy". | Low | **Fixed 2026-03-10** |
+| FAQ | **Duplicate "Product Information" H2** — second instance renamed to "Returns & Policies". | Low | **Fixed 2026-03-10** |
+| Home, Product | **Review H2 tag pollution** — Customer names changed from `<h2>` to `<p>` in `sw--review_highlight.liquid` and `sw--before_after.liquid`. CDN cache pending. | High | **Fixed 2026-03-10** |
+| Product | **Trust signal verified** — Present in body_html of product ID 15080908194124. Correct URL: `/products/hair-meso-infusion-system-box-4-vials-1-month`. | High | **Closed 2026-03-10** |
+| Blog | **16KB articleBody in JSON-LD** — Not present. Article schema uses `description` (155 chars truncated), no `articleBody` field. | Low | **Closed (not an issue)** |
+| Product | **404 on old product URL** — Redirect created (ID: 990936498508): `/products/hair-meso-infusion-system-box-1-month` → `/products/hair-meso-infusion-system-box-4-vials-1-month`. | Medium | **Fixed 2026-03-10** |
+| All 6 EN pages | **Author attribution added** — "Written by Malcolm Smith, Founder of Hairgenetix" added to trust signals on Blog (body_html), About (body_html), Home (custom-liquid), Science (custom-liquid), FAQ (custom-liquid). Product in preview. | High | **Fixed 2026-03-10** |
+| FAQ | **FAQ answers enriched** — 8 FAQ answers updated with PubMed citations, internal links to Science/Copper Peptide/PDRN/Guarantee/Product pages, and clinical trial data (93% shedding reduction, 150-day trial). | Medium | **Fixed 2026-03-10** |
+| Science | **Front-loading definition paragraph** — Added 771-char definition paragraph to Science page body_html: "Hair mesotherapy is a treatment where biologically active ingredients..." with key clinical result (93% reduction) and 3 internal links. | Medium | **Fixed 2026-03-10** |
+| Blog | **FAQPage schema for blog FAQ section** — Added FAQPage JSON-LD in `seo-schema-content.liquid` for blog articles containing FAQ content. 5 Q&A pairs matching the visible FAQ section. | Medium | **Fixed 2026-03-10** |
+| Homepage | **Definition paragraph added** — Custom-liquid section after hero banner: "Hairgenetix is a Netherlands-based hair health company..." with 3 internal links (mesotherapy, copper peptide, science). | Medium | **Fixed 2026-03-10** |
+| About | **Additional internal links** — Added 2 more contextual links (products collection, mesotherapy page). Now 10 internal links total. | Low | **Fixed 2026-03-10** |
+| Product | **PREVIEW ONLY** — Comparison table, key results, how it works, internal links, author attribution. Preview at `docs/audits/product-page-preview.html`. **Awaiting Malcolm approval.** | High | **Pending approval** |
+
