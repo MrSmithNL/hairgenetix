@@ -97,6 +97,17 @@ From the AI Discovery v2.0 audit (score: 52/100). Ordered by ease of implementat
 | HG-044 | Add video content to product pages | Medium | Planned | Multi-modal content = 156% higher AI selection. |
 | HG-045 | Reach out to trichologists for authority partnerships | High | Planned | Find certified trichologists willing to review/endorse products, co-author content, or serve as advisory board. Key approach: (1) Search IAT/WTS certified trichologists in NL/EU, (2) Reach out via LinkedIn with value proposition — free product samples + revenue share on referrals, (3) Offer co-authored article on copper peptides for hair, (4) Ask for professional review/testimonial for site. Target: 1-2 partnerships. This adds E-E-A-T authority that AI systems weight heavily. |
 
+## Science Hub Research (2026-03-10)
+
+| ID | Task | Priority | Status | Notes |
+|----|------|----------|--------|-------|
+| HG-090 | Research: Science hub page AISO architecture | HIGH | Done | Full report at `docs/research-science-hub-page.md`. All 20 AISO criteria addressed with specific content recommendations, visual design patterns, linking architecture, and 5 competitor examples. |
+| HG-091 | Build science hub page `/pages/the-science` — implement research | HIGH | Planned | Implement recommendations from HG-090. Priority 1: FAQ + answer block + comparison table + definitions. See `docs/research-science-hub-page.md` Priority 1 section. |
+| HG-092 | Build subpage: Scientific Research — Copper Peptides (GHK-Cu, AHK-Cu) | HIGH | Planned | 2,500-3,500 words. Deep mechanism (Wnt/beta-catenin), full study table, comparison GHK-Cu vs AHK-Cu, subpage FAQ. |
+| HG-093 | Build subpage: Scientific Research — Microneedling / Mesotherapy | HIGH | Planned | 2,500-3,500 words. Dhurat 2013 RCT as anchor study. Protocol content. Transdermal delivery mechanism. |
+| HG-094 | Build subpage: Scientific Research — PDRN | HIGH | Planned | 2,500-3,500 words. A2A receptor mechanism. 2024 study (PubMed 38842633) as anchor. Hair loss clinical data. |
+| HG-095 | Add MedicalWebPage + SpeakableSpecification schema to hub | MEDIUM | Planned | Implement after content is live. Depends on HG-091. |
+
 ## Completed
 
 | ID | Task | Completed | Notes |

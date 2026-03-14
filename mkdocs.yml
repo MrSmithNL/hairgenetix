@@ -62,14 +62,46 @@ nav:
   - Audits:
       - Audit Extraction (2026-03-08): audit-extraction-2026-03-08.md
       - QA Checklist (2026-03-08): qa-checklist-2026-03-08.md
-      - Page Audits:
-          - Tracker: audits/tracker-hairgenetix.md
-          - DE Homepage (2026-03-08): audits/page-audit-2026-03-08-de-homepage.md
-          - DE Homepage (2026-03-09): audits/page-audit-2026-03-09-de-homepage.md
-          - EN Homepage (2026-03-09): audits/page-audit-2026-03-09-en-homepage.md
-          - EN Homepage R2 (2026-03-09): audits/page-audit-2026-03-09-en-homepage-r2.md
-          - NL Homepage (2026-03-09): audits/page-audit-2026-03-09-nl-homepage.md
-          - NL Homepage R2 (2026-03-09): audits/page-audit-2026-03-09-nl-homepage-r2.md
+      - Tracker: audits/tracker-hairgenetix.md
+      - Sandbox Proposals (EN): audits/sandbox-proposals-en.md
+      - Site Audits:
+          - EN Site Audit (2026-03-11): audits/site-audit-2026-03-11-en.md
+          - EN vs DE Site Audit (2026-03-12): audits/site-audit-2026-03-12-en-vs-de.md
+      - Comparison Reports:
+          - EN Round 2 Comparison (2026-03-09): audits/en-round2-comparison-2026-03-09.md
+          - EN Round 3 Comparison (2026-03-10): audits/en-round3-comparison-2026-03-10.md
+      - Page Audits (2026-03-08):
+          - DE Homepage: audits/page-audit-2026-03-08-de-homepage.md
+      - Page Audits — DE (2026-03-09):
+          - Homepage: audits/page-audit-2026-03-09-de-homepage.md
+          - About: audits/page-audit-2026-03-09-de-about.md
+          - Blog — Mesotherapy: audits/page-audit-2026-03-09-de-blog-mesotherapy.md
+          - FAQ: audits/page-audit-2026-03-09-de-faq.md
+          - Product: audits/page-audit-2026-03-09-de-product.md
+          - Science: audits/page-audit-2026-03-09-de-science.md
+      - Page Audits — EN (2026-03-09):
+          - Homepage: audits/page-audit-2026-03-09-en-homepage.md
+          - Homepage R2: audits/page-audit-2026-03-09-en-homepage-r2.md
+          - About: audits/page-audit-2026-03-09-en-about.md
+          - Blog — Mesotherapy: audits/page-audit-2026-03-09-en-blog-mesotherapy.md
+          - FAQ: audits/page-audit-2026-03-09-en-faq.md
+          - Product: audits/page-audit-2026-03-09-en-product.md
+          - Science: audits/page-audit-2026-03-09-en-science.md
+      - Page Audits — Other Languages (2026-03-09):
+          - DA Homepage: audits/page-audit-2026-03-09-da-homepage.md
+          - ES Homepage: audits/page-audit-2026-03-09-es-homepage.md
+          - FR Homepage: audits/page-audit-2026-03-09-fr-homepage.md
+          - IT Homepage: audits/page-audit-2026-03-09-it-homepage.md
+          - NL Homepage: audits/page-audit-2026-03-09-nl-homepage.md
+          - NL Homepage R2: audits/page-audit-2026-03-09-nl-homepage-r2.md
+          - NO Homepage: audits/page-audit-2026-03-09-no-homepage.md
+          - SV Homepage: audits/page-audit-2026-03-09-sv-homepage.md
+      - Page Audits — EN (2026-03-11):
+          - Ingredients: audits/page-audit-2026-03-11-en-ingredients.md
+          - Hair Loss: audits/page-audit-2026-03-11-hair-loss.md
+      - Page Audits — EN (2026-03-12):
+          - Hair Loss: audits/page-audit-2026-03-12-en-hair-loss.md
+          - Scientific Research: audits/page-audit-2026-03-12-en-scientific-research.md
   - Security:
       - Accounts & Access: accounts-and-access.md
       - Security Risk Log: security-risk-log.md
